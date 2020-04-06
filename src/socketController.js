@@ -1,5 +1,7 @@
-const socketContoller = socket => {
-  socket.on("setNickname", ({ nickname }) => {
+import events from "./events";
+
+const socketContoller = (socket) => {
+  socket.on(events.setNickname, ({ nickname }) => {
     console.log(nickname);
     socket.nickname = nickname;
   });

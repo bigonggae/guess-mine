@@ -6,9 +6,9 @@ const LOGGED_OUT = "loggedOut";
 const LOGGED_IN = "loggedIn";
 const nickname = localStorage.getItem(NICKNAME);
 
-const logIn = nickname => {
-  const socket = io("/");
-  socket.emit("setNickname", { nickname });
+const logIn = (nickname) => {
+  window.socket = io("/");
+  window.socket.emit(window.events.setNickname, { nickname });
 };
 
 if (nickname === null) {
@@ -18,7 +18,7 @@ if (nickname === null) {
   logIn(nickname);
 }
 
-const handleFormSubmit = e => {
+const handleFormSubmit = (e) => {
   e.preventDefault();
   const input = loginForm.querySelector("input");
   const { value } = input;
